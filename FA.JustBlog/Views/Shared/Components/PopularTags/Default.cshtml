@@ -1,0 +1,11 @@
+﻿@model IEnumerable<FA.JustBlog.Models.TagViewModel>
+
+<div class="popular-tags">
+    <h3>Top 10 Tags</h3>
+    <ul>
+        @foreach (var tag in Model)
+        {
+            <li>@Html.ActionLink(tag.Name, "Index", "Posts", new { tag = tag.Name }, null)</li>
+        }
+    </ul>
+</div>

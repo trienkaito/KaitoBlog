@@ -1,0 +1,21 @@
+﻿<!-- Views/Shared/_Header.cshtml -->
+@model FA.JustBlog.Models.PostViewModel
+
+<header class="masthead postHead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>@Model.Title</h1>
+                    <h2 class="subheading">@Model.ShortDescription</h2>
+                    <span class="meta">
+                        Posted by
+                        <a href="#">@Model.UrlSlug</a>
+                        on @Model.PostedOn
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

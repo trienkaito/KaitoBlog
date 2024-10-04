@@ -1,0 +1,19 @@
+﻿@model IEnumerable<FA.JustBlog.Models.PostViewModel>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var post in Model)
+    {
+        <div class="post-preview">
+
+            <a>  @Html.ActionLink(@post.Title, "Index", "Post", new { year = @post.PostedOn.Year, month = @post.PostedOn.Month.ToString("00"), urlSlug = @post.UrlSlug }, null) <h6>@post.Title</h6></a>
+            <p class="post-meta">
+                Posted by <a>@post.Meta</a> on @post.PostedOn.ToString("MMMM d, yyyy") with rate @post.RateCount by @post.ViewCount view(s)
+            </p>
+        </div>
+    }
+}
+else
+{
+    <p>No posts available.</p>
+}

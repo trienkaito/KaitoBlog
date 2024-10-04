@@ -1,0 +1,110 @@
+﻿@model IEnumerable<FA.JustBlog.Areas.Admin.Models.PostViewModel>
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Overview</li>
+</ol>
+
+<!-- Search Form -->
+<div class="card mb-3">
+    <div class="card-header">
+        <form asp-action="Index" method="get" class="form-inline">
+            <input type="text" name="searchQuery" class="form-control mr-sm-2" placeholder="Search for posts...">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</div>
+
+<!-- DataTables Example -->
+<div class="card mb-3">
+    <div class="card-header">
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Posts</span>
+            </a>
+            @Html.ActionLink("Add New", "Create", "Post", new { area = "Admin" }, new { @class = "btn btn-primary", @role = "button" })
+
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <h6 class="dropdown-header">List Post:</h6>
+                @Html.ActionLink("Latest Posts", "Index", "Post", new { Type = "Latest Posts" }, new { @class = "dropdown-item" })
+                @Html.ActionLink("Most Viewed Posts", "Index", "Post", new { Type = "Most Viewed Posts" }, new { @class = "dropdown-item" })
+                @Html.ActionLink("Most Interesting Posts", "Index", "Post", new { Type = "Most Interesting Posts" }, new { @class = "dropdown-item" })
+                @Html.ActionLink("Published Posts", "Index", "Post", new { Type = "Published Posts" }, new { @class = "dropdown-item" })
+                @Html.ActionLink("Un-published Posts", "Index", "Post", new { Type = "Un-published Posts" }, new { @class = "dropdown-item" })
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>ShortDescription</th>
+                        <th>PostContent</th>
+                        <th>Meta</th>
+                        <th>UrlSlug</th>
+                        <th>Published</th>
+                        <th>PostedOn</th>
+                        <th>Modified</th>
+                        <th>ViewCount</th>
+                        <th>RateCount</th>
+                        <th>TotalRate</th>
+                        <th>TagValues</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>ShortDescription</th>
+                        <th>PostContent</th>
+                        <th>Meta</th>
+                        <th>UrlSlug</th>
+                        <th>Published</th>
+                        <th>PostedOn</th>
+                        <th>Modified</th>
+                        <th>ViewCount</th>
+                        <th>RateCount</th>
+                        <th>TotalRate</th>
+                        <th>TagValues</th>
+                        <th>Actions</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var post in Model)
+                    {
+                        <tr>
+                            <td>@post.Id</td>
+                            <td>@post.Title</td>
+                            <td>@post.ShortDescription</td>
+                            <td>@post.PostContent</td>
+                            <td>@post.Meta</td>
+                            <td>@post.UrlSlug</td>
+                            <td>@post.Published</td>
+                            <td>@post.PostedOn</td>
+                            <td>@post.Modified</td>
+                            <td>@post.ViewCount</td>
+                            <td>@post.RateCount</td>
+                            <td>@post.TotalRate</td>
+                            <td>@post.TagValues</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = @post.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = @post.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = @post.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+s

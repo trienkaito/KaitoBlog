@@ -1,0 +1,10 @@
+﻿@model IEnumerable<FA.JustBlog.Models.CategoryViewModel>
+
+@foreach (var cate in Model)
+{
+   <li class="nav-item">
+        @Html.ActionLink(cate.Name, "Index", "Home", new { Name = cate.Name }, null)
+       @*  <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" asp-route-Name="@cate.Name">@cate.Name</a> *@
+</li>
+ 
+}
